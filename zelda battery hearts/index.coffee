@@ -23,11 +23,13 @@ style = '''
 		height 10px
 		vertical-align top
 		overflow hidden
+		margin-right 6px
 
 	.p1d2
 		display inline-block
 		width 6px
 		overflow hidden
+		margin-right 6px
 
 	.p3d4
 		display inline-block
