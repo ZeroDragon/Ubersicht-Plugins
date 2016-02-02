@@ -16,9 +16,7 @@ style =
 	# Define the position, where to display the time.
 	# Set properties you don't need to "auto"
 	position:
-		top:    "auto"
-		bottom: "13%"
-		left:   "auto"
+		bottom: "2%"
 		right:  "2%"
 
 
