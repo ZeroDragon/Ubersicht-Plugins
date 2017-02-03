@@ -9,7 +9,7 @@
 #
 # Adjust the styles as you like
 #
-style =
+styles =
 	# Define the maximum width of the widget.
 	width: "45%"
 
@@ -21,8 +21,8 @@ style =
 
 
 	# Font properties
-	font:            "'Helvetica Neue', sans-serif"
-	font_color:      "#F5F5F5"
+	font:            "'Mexcellent', sans-serif"
+	font_color:      "rgba(255,255,255,0.8)"
 	font_size:       "6vw"
 	font_weight:     "100"
 	letter_spacing:  "0.025em"
@@ -56,13 +56,15 @@ render : (o)->
 			null, 'once', 'doce', 'trece', 'catorce', 'quince',
 			'dieciseis', 'diecisiete', 'dieciocho', 'diecinueve'
 		]
+		veinte : [
+			null, 'veintinuno', 'veintidós','veintitrés','veinticuatro',
+			'veinticinco','veintiséis','veintisiete','veintiocho','veintinueve'
+		]
 		decenas : [
 			null,null,'veinte', 'treinta', 'cuarenta', 'cincuenta'
 		]
 	}
-	now = new Date
-	inicio = "son las"
-	inicio = "es la" if now.getHours() is 13 or now.getHours() is 1
+	now = new Date()
 	hora = horas[now.getHours()]
 	currmin = now.getMinutes()
 	if currmin is 0
@@ -71,6 +73,8 @@ render : (o)->
 		cont = 'con '+minutos.enteros[currmin]
 	else if currmin > 10 and currmin < 20
 		cont = minutos.diez[currmin-10]
+	else if currmin > 20 and currmin < 30
+		cont = minutos.veinte[currmin-20]
 	else
 		decena = currmin.toString().slice(0,-1)
 		unidad = ~~currmin.toString().slice(-1)
@@ -90,20 +94,19 @@ render : (o)->
 	"""
 
 style: """
-	top: #{@style.position.top}
-	bottom: #{@style.position.bottom}
-	right: #{@style.position.right}
-	left: #{@style.position.left}
-	width: #{@style.width}
-	font-family: #{@style.font}
-	color: #{@style.font_color}
-	font-weight: #{@style.font_weight}
-	text-align: #{@style.text_align}
-	text-transform: #{@style.text_transform}
-	font-size: #{@style.font_size}
-	letter-spacing: #{@style.letter_spacing}
+	top: #{styles.position.top}
+	bottom: #{styles.position.bottom}
+	right: #{styles.position.right}
+	left: #{styles.position.left}
+	width: #{styles.width}
+	font-family: #{styles.font}
+	color: #{styles.font_color}
+	font-weight: #{styles.font_weight}
+	text-align: #{styles.text_align}
+	text-transform: #{styles.text_transform}
+	font-size: #{styles.font_size}
+	letter-spacing: #{styles.letter_spacing}
 	font-smoothing: antialiased
-	text-shadow: #{@style.text_shadow.x_offset} #{@style.text_shadow.y_offset} #{@style.text_shadow.blur} #{@style.text_shadow.color}
-	line-height: #{@style.line_height}
-
+	text-shadow: #{styles.text_shadow.x_offset} #{styles.text_shadow.y_offset} #{styles.text_shadow.blur} #{styles.text_shadow.color}
+	line-height: #{styles.line_height}
 """

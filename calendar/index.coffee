@@ -2,7 +2,7 @@
 # By Carlos Flores
 # https://github.com/ZeroDragon
 
-command : "/usr/local/bin/icalbuddy -nrd eventsToday+30"
+command : "/usr/local/bin/icalbuddy -ec B391D936-6B56-422A-BF19-260DEE9A2E92 -nrd eventsToday+30"
 refreshFrequency: 60000
 
 render : (o)->
@@ -34,7 +34,7 @@ update : (o,domEl)->
 			fecha = e.pop()
 			fecha = fecha.split(' at ')[0].replace(',','')
 			[m,d,a] = fecha.split(' ')
-			m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dec'].indexOf(m)
+			m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].indexOf(m)
 			obj.fecha = new Date(a,m,d,0,0,0).getTime()
 			obj.desc = e.filter((e)-> e[0...7] is 'notes: ').join('').replace('notes: ','').trim()
 			return obj
